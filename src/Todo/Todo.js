@@ -16,10 +16,10 @@ function Todo() {
 	}
 
 	function handleDelete(i) {
-		let newTasks = tasks;
-		newTasks.splice(i, 1);
+		let newTasks = tasks.filter((task, index)=>{
+			return index !== i
+		});
 		setTasks(newTasks);
-		console.log(tasks)
 	}
 
 	return (
@@ -34,7 +34,7 @@ function Todo() {
 			<ul> {tasks.map((task,i)=>{
 					return(
 						<li key={i}>
-							<button onClick={(i)=>handleDelete(i)}>X</button>
+							<button onClick={()=>handleDelete(i)}>X</button>
 							{task}
 						</li>
 					)
