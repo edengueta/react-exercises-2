@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './RealNumber.scss';
 
 function RealNumber() {
+	const [value, setValue]=useState('');
+
 	return (
 		<div className="RealNumber">
 			<p>
@@ -10,9 +12,10 @@ function RealNumber() {
 				"238764" - <span className="value--valid">valid</span> <br />
 				"A13" - <span className="value--invalid">invalid</span>
 			</p>
+			
+			<input value={value} type="text" className="text-box" onChange={(e)=> setValue(e.target.value)} />
+			{/^\d+$/.test(value) && <button>Submit</button>}
 
-			<input type="text" className="text-box" />
-			<button>Submit</button>
 		</div>
 	)
 }
